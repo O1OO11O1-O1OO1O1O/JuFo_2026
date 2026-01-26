@@ -190,7 +190,7 @@ def RechnungOTP():
         Anzeigen()
 
     #Ver/Entschlüsseln
-´
+
 
 def Schlüsselholen():
 
