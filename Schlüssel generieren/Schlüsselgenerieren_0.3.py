@@ -2,15 +2,17 @@ import RPi.GPIO as GPIO
 from pathlib import Path
 import time
 
+KeySets = 100 #Einstellen!!!
+intervall = 0.005
+
+name = "zahlen" + str(intervall) + ".txt"
+
 GPIO.setmode(GPIO.BCM)
-pfad = Path("/home/marten/Test Schlüssel") / "zahlen.txt" # Path("/media/marten/INTENSO") / "zahlen.txt"
+pfad = Path("/home/marten/Test Schlüssel") / name # Path("/media/marten/INTENSO") / "zahlen.txt"
 abc = ["A", "Ä", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "Ö", "P", "Q", "R", "S", "T", "U", "Ü", "V", "W", "X", "Y", "Z", "a", "ä", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "ö", "p", "q", "r", "s", "t", "u", "ü", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~", " ", "°"]
 
 speicher = ""
 sensor = 1
-
-KeySets = 100 #Einstellen!!!
-intervall = 0.05
 
 print("Dauer: ca.", KeySets * 240 / ((1 / intervall ) * 60), "Minuten")
 
@@ -68,13 +70,13 @@ try:
         done = False
 
         if sensor == 1:
-            wert = str(LDR1())[-1]
+            wert = str(LDR1())[-2]
 
         if sensor == 2:
-            wert = str(LDR2())[-1]
+            wert = str(LDR2())[-2]
 
         if sensor == 3:
-            wert = str(NTC1())[-1]
+            wert = str(NTC1())[-2]
 
 
         speicher = speicher + wert
